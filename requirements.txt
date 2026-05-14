@@ -1,0 +1,9 @@
+# Core runtime dependencies — kept in sync with pyproject.toml [project.dependencies]
+torch>=2.1.0
+torchvision>=0.16.0
+datasets>=2.14.0
+transformers>=4.40.0
+matplotlib>=3.7.0
+pandas>=2.0.0
+numpy>=1.24.0
+certifi>=2023.7.22

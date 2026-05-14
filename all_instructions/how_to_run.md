@@ -9,7 +9,9 @@ source .venv/bin/activate
 2) Install dependencies
 ```bash
 pip install -U pip
-pip install "torch>=2.1.0" torchvision datasets transformers matplotlib pandas
+pip install -e .
+# or, to also install dev tools (ruff, mypy, pytest):
+pip install -e ".[dev]"
 ```
 
 3) (Optional) Configure local caches
@@ -60,6 +62,6 @@ BS=32 EPOCHS=1 MAX_SAMPLES=2 bash all_instructions/run_all.sh
 Advanced (optional):
 - Force a fixed LR for all optimizers: add `--lr-policy fixed --learning-rate <value>` to the command.
 - Override specific optimizers in per-opt policy: `--lr-overrides "sgd=0.05,lars=0.1"`.
-- For HF encoder models (e.g., DistilBERT), use the provided LR overrides in `all_instructions/commands.md`.
+- For HF encoder models (e.g., DistilBERT), use a lower LR override: `--lr-overrides "distilbert_sentiment=2e-5"`.
 
 
