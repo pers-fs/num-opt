@@ -1,0 +1,95 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "num-opt-benchmark"
+version = "0.1.0"
+description = "Multi-task optimizer benchmark for deep learning — compare 16 optimizers across 8 task families."
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+keywords = ["optimization", "deep-learning", "benchmark", "pytorch"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "datasets>=2.14.0",
+    "transformers>=4.40.0",
+    "matplotlib>=3.7.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "certifi>=2023.7.22",
+]
+
+[project.optional-dependencies]
+dev = [
+    "ruff>=0.4.0",
+    "mypy>=1.8.0",
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+]
+
+[project.scripts]
+num-opt = "benchmark.main:main"
+
+[project.urls]
+Repository = "https://github.com/filippostruffi/num-opt"
+Issues = "https://github.com/filippostruffi/num-opt/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["benchmark*"]
+
+# ---------------------------------------------------------------------------
+# Ruff (linting + formatting)
+# ---------------------------------------------------------------------------
+[tool.ruff]
+target-version = "py39"
+line-length = 120
+src = ["benchmark"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # Pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+    "B",   # flake8-bugbear
+]
+ignore = [
+    "E501",  # line too long — handled by formatter
+    "B008",  # do not perform function calls in default args
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["benchmark"]
+
+# ---------------------------------------------------------------------------
+# Mypy (type checking)
+# ---------------------------------------------------------------------------
+[tool.mypy]
+python_version = "3.9"
+ignore_missing_imports = true
+warn_return_any = false
+warn_unused_ignores = true
+no_implicit_optional = true
+
+# ---------------------------------------------------------------------------
+# Pytest
+# ---------------------------------------------------------------------------
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
