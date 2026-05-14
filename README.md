@@ -4,7 +4,6 @@ A reproducible benchmark comparing **16 optimization algorithms** across **8 dee
 
 [![Python](https://img.shields.io/badge/python-3.9%20%7C%203.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org)
 [![License: CC0](https://img.shields.io/badge/license-CC0%201.0-lightgrey)](LICENSE)
-[![CI](https://github.com/filippostruffi/num-opt/actions/workflows/ci.yml/badge.svg)](https://github.com/filippostruffi/num-opt/actions/workflows/ci.yml)
 
 ---
 
